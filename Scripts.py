@@ -39,5 +39,14 @@ def selecting_cities():
                 time.sleep(2)
         except:
             pass
+
+def click_on_search_button():
+    driver.find_element(By.XPATH,xpath.search_button_xpath).click()
+
+def assertion_for_next_page_load():
+    text = "FILTERS"
+    assert driver.find_element(By.XPATH, xpath.assertion_element_xpath) == text
 launching_redbus()
 selecting_cities()
+click_on_search_button()
+assertion_for_next_page_load()
