@@ -4,7 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import xpath
 from xpath import *
-
+import datetime
+from datetime import datetime,timedelta
 
 application_url = 'https://www.redbus.in/'
 
@@ -40,13 +41,39 @@ def selecting_cities():
         except:
             pass
 
+
+
 def click_on_search_button():
     driver.find_element(By.XPATH,xpath.search_button_xpath).click()
 
 def assertion_for_next_page_load():
     text = "FILTERS"
     assert driver.find_element(By.XPATH, xpath.assertion_element_xpath) == text
+
+
+def select_date():
+    month_dates = driver.find_elements(By.XPATH, xpath.month_dates_xpath)
+    next_dates = driver.find_elements(By.XPATH, xpath.next_month_dates_xpath)
+    import datetime
+    current_date = str(datetime.date.today().day)
+    current_month_dates = [date.text for date in month_dates]
+    next_month_dates = [date.text for date in next_dates]
+    try:
+        date_after_current_date = current_month_dates.index(current_date) + 2
+        month_dates[date_after_current_date].click()
+        time.sleep(2)
+    except:
+        next_dates[1].click()
+        time.sleep(2)
+    from datetime import datetime
+    date_after_2_days_from_current_date = str((datetime.now() + timedelta(days=2)).day)
+    date_after_selection= (driver.find_element(By.XPATH,xpath.selected_date_xpath).text).split(' ')[0]
+    assert date_after_selection == date_after_2_days_from_current_date
+
+
+
 launching_redbus()
 selecting_cities()
+select_date()
 click_on_search_button()
 assertion_for_next_page_load()
