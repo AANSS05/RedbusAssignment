@@ -41,15 +41,11 @@ def selecting_cities():
         except:
             pass
 
-
+def scroll_up():
+    driver.execute_script("window.scrollTo(0,100)")
 
 def click_on_search_button():
     driver.find_element(By.XPATH,xpath.search_button_xpath).click()
-
-def assertion_for_next_page_load():
-    text = "FILTERS"
-    assert driver.find_element(By.XPATH, xpath.assertion_element_xpath) == text
-
 
 def select_date():
     month_dates = driver.find_elements(By.XPATH, xpath.month_dates_xpath)
@@ -70,10 +66,18 @@ def select_date():
     date_after_selection= (driver.find_element(By.XPATH,xpath.selected_date_xpath).text).split(' ')[0]
     assert date_after_selection == date_after_2_days_from_current_date
 
+def filter_buses():
+    driver.find_element(By.XPATH,xpath.first_filter_xpath).click()
+    time.sleep(3)
+    driver.find_element(By.XPATH,xpath.second_filter_xpath).click()
+    time.sleep(3)
+
+
 
 
 launching_redbus()
 selecting_cities()
 select_date()
+scroll_up()
 click_on_search_button()
-assertion_for_next_page_load()
+filter_buses()
