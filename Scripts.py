@@ -72,6 +72,13 @@ def filter_buses():
     driver.find_element(By.XPATH,xpath.second_filter_xpath).click()
     time.sleep(3)
 
+def bus_with_low_fare():
+    driver.find_element(By.XPATH, xpath.Fare_link_xpath).click()
+    elements = driver.find_elements(By.XPATH, xpath.All_buses_details_xpath)
+    buses = [item.text for item in elements]
+    low_fare_bus = buses[0]
+    bus = [item for item in low_fare_bus.split('\n')]
+    print(bus[0]+' has the lowest fair of '+bus[11])
 
 
 
@@ -81,3 +88,4 @@ select_date()
 scroll_up()
 click_on_search_button()
 filter_buses()
+bus_with_low_fare()

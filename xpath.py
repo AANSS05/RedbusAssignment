@@ -8,6 +8,9 @@ next_month_dates_xpath = '//*[contains(@class,"DayTilesWrapper")]//*[contains(@c
 selected_date_xpath = "//text[@class='dateText']"
 first_filter_xpath ="//*[text()='SEATER']"
 second_filter_xpath ="//*[text()='AC']"
+Fare_link_xpath =  "//a[text()='Fare']"
+All_buses_details_xpath = "//div[@class='clearfix bus-item-details']"
+
 
 
 
