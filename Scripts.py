@@ -88,8 +88,4 @@ select_date()
 scroll_up()
 click_on_search_button()
 filter_buses()
-<<<<<<< HEAD
 bus_with_low_fare()
-=======
-bus_with_low_fare()
->>>>>>> syed-assignment
