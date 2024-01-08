@@ -78,7 +78,10 @@ def bus_with_low_fare():
     buses = [item.text for item in elements]
     low_fare_bus = buses[0]
     bus = [item for item in low_fare_bus.split('\n')]
-    print(bus[0]+' has the lowest fair of '+bus[11])
+    for details in bus:
+        if details.startswith('INR'):
+            print(bus[0]+' has the lowest fair of '+details)
+    
 
 
 
