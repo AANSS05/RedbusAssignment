@@ -37,6 +37,13 @@ def selecting_cities():
                 time.sleep(2)
         except:
             pass
+
+def scroll_up():
+    driver.execute_script("window.scrollTo(0,100)")
+
+def click_on_search_button():
+    driver.find_element(By.XPATH,xpath.search_button_xpath).click()
+    
 def filter_buses():
     driver.find_element(By.XPATH,xpath.first_filter_xpath).click()
     time.sleep(3)
@@ -65,4 +72,6 @@ def select_date():
 launching_redbus()
 selecting_cities()
 select_date()
+scroll_up()
+click_on_search_button()
 filter_buses()
