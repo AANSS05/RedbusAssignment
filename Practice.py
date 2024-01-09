@@ -12,5 +12,3 @@ def bus_with_low_fare():
 
 
 bus_with_low_fare()
-
-# qwer
