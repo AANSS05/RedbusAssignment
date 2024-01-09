@@ -3,8 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import xpath
-from xpath import *
-# import datetime
 from datetime import datetime,timedelta
 
 application_url = 'https://www.redbus.in/'
@@ -20,7 +18,7 @@ def launching_redbus():
     driver.get(application_url)
 
 def selecting_cities():
-    driver.find_element(By.XPATH, xpath.From_source_field_xpath).send_keys('Mumbai')
+    driver.find_element(By.XPATH, xpath.from_source_field_xpath).send_keys('Mumbai')
     time.sleep(2)
     From_cities_suggestion_list = driver.find_elements(By.XPATH, xpath.from_cities_suggestion_xpath)
     for city in From_cities_suggestion_list:
