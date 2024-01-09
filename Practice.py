@@ -69,9 +69,20 @@ def select_date():
     date_after_selection= (driver.find_element(By.XPATH,xpath.selected_date_xpath).text).split(' ')[0]
     assert date_after_selection == date_after_2_days_from_current_date
 
+def bus_with_low_fare():
+    driver.find_element(By.XPATH, xpath.Fare_link_xpath).click()
+    elements = driver.find_elements(By.XPATH, xpath.All_buses_details_xpath)
+    buses = [item.text for item in elements]
+    low_fare_bus = buses[0]
+    bus = [item for item in low_fare_bus.split('\n')]
+    for details in bus:
+        if details.startswith('INR'):
+            print(bus[0]+' has the lowest fair of '+details)
+
 launching_redbus()
 selecting_cities()
 select_date()
 scroll_up()
 click_on_search_button()
 filter_buses()
+bus_with_low_fare()
