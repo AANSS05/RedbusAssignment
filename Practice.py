@@ -37,6 +37,11 @@ def selecting_cities():
                 time.sleep(2)
         except:
             pass
+def filter_buses():
+    driver.find_element(By.XPATH,xpath.first_filter_xpath).click()
+    time.sleep(3)
+    driver.find_element(By.XPATH,xpath.second_filter_xpath).click()
+    time.sleep(3)
 
 def select_date():
     month_dates = driver.find_elements(By.XPATH, xpath.month_dates_xpath)
@@ -60,3 +65,4 @@ def select_date():
 launching_redbus()
 selecting_cities()
 select_date()
+filter_buses()
